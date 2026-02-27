@@ -16,10 +16,13 @@ def client_connection(host='10.103.1.47', port=5000):
             response = client.recv(1024).decode()
             print(response)
         
-        client.closed()
+        client.close()
         
     except Exception as e:
         print(f"Error: {e}")
         
 if __name__ == "__main__":
-    client_connection()
+    host = input("Enter server IP (default 10.103.1.47): ").strip()
+    if not host:
+        host = '10.103.1.47'
+    client_connection(host=host)
